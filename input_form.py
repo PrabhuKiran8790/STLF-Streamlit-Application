@@ -2,8 +2,6 @@ import streamlit as st
 import numpy as np
 from predict import predict
 import tensorflow as tf
-import pandas as pd
-from sklearn.preprocessing import MinMaxScaler
 
 def form():
     ae_model = tf.keras.models.load_model('Autoencoder_ls_10_bs_64.h5')
