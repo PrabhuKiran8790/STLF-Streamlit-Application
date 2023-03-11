@@ -2,6 +2,8 @@ import streamlit as st
 import numpy as np
 from predict import predict
 import tensorflow as tf
+import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
 
 def form():
     ae_model = tf.keras.models.load_model('Autoencoder_ls_10_bs_64.h5')
@@ -48,19 +50,15 @@ def form():
         
         if submit := st.form_submit_button("Submit"):
             temp_humidity_inputs = np.array([T1, T2, H1, H2, season])
-            temp = predict(temp_humidity_inputs, "temperature_Metadata_N_12_P_11_bs_32.jbl", "temperature_RBF_ANN_model_bs_32_N_12_P_11.h5")
-            temp = (108 - 50) * temp + 50
-            humidity = predict(temp_humidity_inputs, "humidity_Metadata_N_12_P_10_bs_128.jbl", "humidity_RBF_ANN_model_bs_128_N_12_P_10.h5")
-            humidity = (102 - 14) * humidity + 14
+            temp = predict(temp_humidity_inputs, 'models/temp_optimal_info.jbl')
+            humidity = predict(temp_humidity_inputs, 'models/humidity_optimal_info.jbl')
+            st.write(temp_humidity_inputs)
             col1, col2 = st.columns(2)
             with col1:
                 st.write(f"#### Predicted Temperature: {((temp[0][0] - 32)*5)/9:.1f} °C")
                 st.write(f"#### Predicted Humidity: {humidity[0][0]:.1f} %")
             with col2:
-                ae_inputs = [pt1, pt2, pt3, pt4, pt24, pt48, pt72, pt96, day, season, temp[0][0], humidity[0][0]]
-                ae_outputs = ae_model.predict([ae_inputs])
-                ae_out = list(ae_outputs[0])
-                ae_out.pop(3)
-                load = predict(np.array(ae_out), "load_Metadata_N_19_P_12_bs_32.jbl", "load_RBF_ANN_model_bs_32_N_19_P_12.h5")
-                load = (np.array([[6619.96585773]]) - np.array([458.02005145])) * load + np.array([458.02005145])
-                st.write(f"#### Predicted Load: {load[0][0]:.1f} kW")
+                inputs = np.array([[pt1, pt2, pt3, pt4, pt24, pt48, pt72, pt96, day, season, temp[0][0], humidity[0][0]]])
+                load = predict(inputs, 'models/load_optimal_info.jbl', load=True, ae_filepath='Autoencoder_ls_10_bs_64.h5')
+                st.write(f"#### Predicted Load: {load[0][0]}")
+                
