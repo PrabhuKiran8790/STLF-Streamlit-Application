@@ -50,7 +50,6 @@ def form():
             temp_humidity_inputs = np.array([T1, T2, H1, H2, season])
             temp = predict(temp_humidity_inputs, 'models/temp_optimal_info.jbl')
             humidity = predict(temp_humidity_inputs, 'models/humidity_optimal_info.jbl')
-            st.write(temp_humidity_inputs)
             col1, col2 = st.columns(2)
             with col1:
                 st.write(f"#### Predicted Temperature: {((temp[0][0] - 32)*5)/9:.1f} °C")
