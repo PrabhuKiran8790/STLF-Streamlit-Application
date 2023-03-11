@@ -57,5 +57,5 @@ def form():
             with col2:
                 inputs = np.array([[pt1, pt2, pt3, pt4, pt24, pt48, pt72, pt96, day, season, temp[0][0], humidity[0][0]]])
                 load = predict(inputs, 'models/load_optimal_info.jbl', load=True, ae_filepath='Autoencoder_ls_10_bs_64.h5')
-                st.write(f"#### Predicted Load: {load[0][0]}")
+                st.write(f"#### Predicted Load: {load[0][0]:.3f} MW")
                 
