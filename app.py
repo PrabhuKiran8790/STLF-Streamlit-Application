@@ -36,10 +36,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.write("# RBF Neural Network for Predicting Load")
-st.markdown("""```
-1. First predict the temperature and humidity
-2. Enter the input values for the load prediction
-         """)
 
 choice = ['Predict']
 param = st.sidebar.selectbox("Select any of the options below", choice)

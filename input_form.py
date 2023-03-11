@@ -4,10 +4,8 @@ from predict import predict
 import tensorflow as tf
 
 def form():
-    ae_model = tf.keras.models.load_model('Autoencoder_ls_10_bs_64.h5')
     with st.form(key='load'):
         icol1, icol2 = st.columns(2)
-        
         with icol1:
             st.write("##### Please enter the following inputs for Temperature and Humidity Prediction:")
             col1, col2 = st.columns(2)
