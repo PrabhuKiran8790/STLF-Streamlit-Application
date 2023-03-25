@@ -14,9 +14,9 @@ def form():
                 H1 = st.number_input("Humidity (T-1) (%)", min_value=0.0, max_value=100.0, value=97.0, step=0.1)
                 T1 = (T1 * 9/5) + 32
             with col2:
-                T2 = st.number_input("Temperature (T-2) (°C)", min_value=0.0, max_value=50.0, value=33.0, step=0.1)
+                T2 = st.number_input("Temperature (T-24) (°C)", min_value=0.0, max_value=50.0, value=33.0, step=0.1)
                 T2 = (T2 * 9/5) + 32
-                H2 = st.number_input("Humidity (T-2) (%)", min_value=0.0, max_value=100.0, value=98.0, step=0.1)
+                H2 = st.number_input("Humidity (T-24) (%)", min_value=0.0, max_value=100.0, value=98.0, step=0.1)
             season = st.selectbox("Season", ["Winter", "Summer", "Rainy"])
             st.write("---")
             day = st.selectbox("Day", ["weekday", "weekend"])

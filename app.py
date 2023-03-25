@@ -46,9 +46,9 @@ if param == 'Predict':
                         ---
                         **Inputs:**
                         - Temperature (T-1) (°C)  
-                        - Temperature (T-2) (°C)  
+                        - Temperature (T-24) (°C)  
                         - Humidity (T-1) (%)  
-                        - Humidity (T-2) (%)  
+                        - Humidity (T-24) (%)  
                         - Season (Winter, Summer, Rainy)  
                         ---
                         **Outputs:**
