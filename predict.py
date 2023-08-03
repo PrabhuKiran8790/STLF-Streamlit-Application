@@ -24,6 +24,7 @@ def autoEncoder(inputs, file_path:str):
 
 def predict(inputs, file_path:str, ae_filepath:str=None, load=False):
     metadata = jbl.load(file_path)  
+    print(metadata)
     if load:
         inputs = scale(inputs, metadata['x_min'], metadata['x_max'])
         x_scaled = autoEncoder(inputs.reshape((1, 12)), ae_filepath)      
