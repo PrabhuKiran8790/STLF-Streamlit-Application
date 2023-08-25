@@ -64,7 +64,7 @@ st.sidebar.markdown(
     header_html, unsafe_allow_html=True,
 )
 
-st.sidebar.write("#\n#\n#")
+st.sidebar.write("#\n#")
 st.sidebar.markdown("**Disclaimer:** This project is associated with the [Center for Artificial Intelligence and Deep Learning (CAIDL)](https://sru.edu.in/centers/caidl/) at [SR University](https://sru.edu.in).")
 st.sidebar.write("")
 st.sidebar.markdown("This Web Application is Designed by Prabhu Kiran Konda. [prabhukirankonda.vercel.app](https://prabhukirankonda.vercel.app)")
